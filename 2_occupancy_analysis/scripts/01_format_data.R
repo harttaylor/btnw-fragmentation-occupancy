@@ -12,7 +12,7 @@
 # file-format label, not the model type. Script 03 reads them for the Bayesian
 # occupancy models.
 # =============================================================================
-
+setwd("2_occupancy_analysis/")
 library(tidyr)
 library(dplyr)
 select <- dplyr::select   # avoid clashes with other packages' select()
@@ -20,15 +20,14 @@ select <- dplyr::select   # avoid clashes with other packages' select()
 # =============================================================================
 # LOAD RAW DATA
 # =============================================================================
-visit_matrix          <- read.csv("data/2yearvisitmatrix.csv")
-visits_for_det_covs   <- read.csv("data/visitsfordetcovs.csv")
+visit_matrix <- read.csv("data/2yearvisitmatrix.csv")
+visits_for_det_covs <- read.csv("data/visitsfordetcovs.csv")
 
 # Landscape metrics: one file per fragmentation definition (hyp1/2/3 = A/B/C),
 # each containing all three buffer sizes in a "buffer_size" column.
 habitatA <- read.csv("data/hyp1_landscape_metrics_2m_res.csv")
 habitatB <- read.csv("data/hyp2_landscape_metrics_2m_res.csv")
 habitatC <- read.csv("data/hyp3_landscape_metrics_2m_res.csv")
-
 
 # Create separate dataframes for each buffer size
 habitatA_150 <- habitatA %>%
@@ -318,9 +317,9 @@ range(defA_1000$julian_date) # ranges from 126 to 199 day of year
 range(defA_1000$time_of_day) # ranges from 3am to 10:30am, mainly between 4:30am and 8:30 am 
 
 # save all those datasets
-write.csv(defA_150_std, "4_occupancy_models/data/defA150_glmmdata.csv")
-write.csv(defA_500_std, "4_occupancy_models/data/defA500_glmmdata.csv")
-write.csv(defA_1000_std, "4_occupancy_models/data/defA1000_glmmdata.csv")
+write.csv(defA_150_std, "data/defA150_glmmdata.csv")
+write.csv(defA_500_std, "data/defA500_glmmdata.csv")
+write.csv(defA_1000_std, "data/defA1000_glmmdata.csv")
 
 
 #=========================================================================================
@@ -540,9 +539,9 @@ range(defB_1000$julian_date) # ranges from 126 to 199 day of year
 range(defB_1000$time_of_day) # ranges from 3am to 10:30am, mainly between 4:30am and 8:30 am 
 
 # save all those datasets
-write.csv(defB_150_std, "4_occupancy_models/data/defB150_glmmdata.csv")
-write.csv(defB_500_std, "4_occupancy_models/data/defB500_glmmdata.csv")
-write.csv(defB_1000_std, "4_occupancy_models/data/defB1000_glmmdata.csv")
+write.csv(defB_150_std, "data/defB150_glmmdata.csv")
+write.csv(defB_500_std, "data/defB500_glmmdata.csv")
+write.csv(defB_1000_std, "data/defB1000_glmmdata.csv")
 
 
 #=========================================================================================
@@ -767,9 +766,9 @@ range(defC_1000$julian_date) # ranges from 126 to 199 day of year
 range(defC_1000$time_of_day) # ranges from 3am to 10:30am, mainly between 4:30am and 8:30 am 
 
 # save all those datasets
-write.csv(defC_150_std, "4_occupancy_models/data/defC150_glmmdata.csv")
-write.csv(defC_500_std, "4_occupancy_models/data/defC500_glmmdata.csv")
-write.csv(defC_1000_std, "4_occupancy_models/data/defC1000_glmmdata.csv")
+write.csv(defC_150_std, "data/defC150_glmmdata.csv")
+write.csv(defC_500_std, "data/defC500_glmmdata.csv")
+write.csv(defC_1000_std, "data/defC1000_glmmdata.csv")
 
 
 # check ranges, means and sds for all fragmentation metrics 
