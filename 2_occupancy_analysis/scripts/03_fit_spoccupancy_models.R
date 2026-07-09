@@ -185,26 +185,22 @@ fit_model <- function(occ_covs, occ_formula, n_beta) {
 # FIT THE FOUR MODELS
 # =============================================================================
 
-cat("\nModel 1: habitat amount only\n")
 model_1 <- fit_model(list(prop_habitat = site_covs$prop_habitat_std),
                      ~ prop_habitat, n_beta = 2)
 saveRDS(model_1, file.path(MODEL_DIR,
         sprintf("model1_habitat_only_def%s_%sm.rds", DEFINITION, SCALE)))
 
-cat("\nModel 2: edge density only\n")
 model_2 <- fit_model(list(edge_density = site_covs$edge_density_std),
                      ~ edge_density, n_beta = 2)
 saveRDS(model_2, file.path(MODEL_DIR,
         sprintf("model2_edge_only_def%s_%sm.rds", DEFINITION, SCALE)))
 
-cat("\nModel 3: habitat + edge (additive)\n")
 model_3 <- fit_model(list(prop_habitat = site_covs$prop_habitat_std,
                           edge_density = site_covs$edge_density_std),
                      ~ prop_habitat + edge_density, n_beta = 3)
 saveRDS(model_3, file.path(MODEL_DIR,
         sprintf("model3_habitat_edge_add_def%s_%sm.rds", DEFINITION, SCALE)))
 
-cat("\nModel 4: habitat * edge (interaction)\n")
 model_4 <- fit_model(list(prop_habitat = site_covs$prop_habitat_std,
                           edge_density = site_covs$edge_density_std),
                      ~ prop_habitat * edge_density, n_beta = 4)

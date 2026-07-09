@@ -124,4 +124,3 @@ write.csv(coupling_tab,
                                      DEFINITION, SCALE)),
           row.names = FALSE)
 
-
